@@ -20,8 +20,8 @@
         }
         
         .image-container {
-            width: 90vw;
-            height: 90vh;
+            width: 100vw;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -43,21 +43,8 @@
             height: 100%;
             width: 100%;
             z-index: 9999;
-            /* border: 5px solid black; */
         }
 
-        /*#timer {
-            font-size: 200px;
-            font-weight: bold;
-            margin: 20px;
-            text-align: center;
-            font-family:'Courier New', Courier, monospace;
-            position: fixed;
-            top: 0;
-            right: 0;
-            padding: 10px;
-            background: green; 
-        }*/ 
         #timer {
             font-size: 100px;
             font-weight: bold;
@@ -80,19 +67,20 @@
 </head>
 <body>
     <!-- <center><img src="img/alphastar_logo.png" width="300px"></center> -->
+    
     <div class="image-container" id="imageContainer">
-        <img src="img/image1.jpg" id="targetImage">
+        <img src="" id="targetImage">
         <canvas id="myCanvas"></canvas>
     </div>
     <script>
 
-        // Stuff that changes based on the Jeopardy Game
+        // things that could change between Jeopardy Games
         let x_vals=[.118,.310,.502,.694,.886];
         let y_vals=[.292,.431,.568,.705,.843];
         function updateSlide() {
-            let base = "img/J1_page-";
+            let base = "img/J1_page-"; // image base path
             let id = (currentSlide + 1).toString();
-            while (id.length < 4) id = "0" + id;
+            while (id.length < 4) id = "0" + id; // pad with zeros
             let slide = base+id+".jpg";
 
             console.log("Updating slide to:", slide);
@@ -100,6 +88,7 @@
         }
 
 
+        // Everything else
         let currentSlide = 0;
         const body = document.body;
         var timerElement;
@@ -118,13 +107,6 @@
         ctx.fillStyle = 'orange';
         let x_w=.15;
         let y_w=.1;
-
-        // for (let i=0; i<5; i++) {
-        //     for (let j=0; j<5; j++) {
-        //         ctx.fillStyle = 'red';          // Point color
-        //         ctx.fillRect(rect.left + x_vals[i] * rect.width, rect.top + y_vals[j] * rect.height, 4, 4);
-        //     }
-        // }
 
         document.addEventListener('click', () => {
             img = document.getElementById('targetImage');
@@ -195,7 +177,6 @@
                     let iv=Number(used[i].charAt(0))-1
                     let jv=Number(used[i].charAt(1))-1
                     console.log(used[i], iv, jv);
-                    //ctx.fillRect(rect_l+(x_vals[iv]+.02)*rect_w, rect_t+(y_vals[jv]+.03)*rect_h, .8*rect_w*(x_vals[iv+1]-x_vals[iv]), .6*(rect_h*(y_vals[jv+1]-y_vals[jv])));
                     let xw = x_vals[iv + 1] - x_vals[iv];
                     let yw = y_vals[jv + 1] - y_vals[jv];
                     let left = rect.left + (x_vals[iv] + 0.1 * xw) * rect.width;
@@ -215,7 +196,9 @@
             }
             updateSlide();
         });
+
         updateSlide();
+
     </script>
 </body>
 </html>
