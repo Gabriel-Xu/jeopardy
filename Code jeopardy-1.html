@@ -79,9 +79,9 @@
     </style>
 </head>
 <body>
-    <center><img src="alphastar_logo.png" width="300px"></center>
+    <center><img src="images/alphastar_logo.png" width="300px"></center>
     <div class="image-container" id="imageContainer">
-        <img src="image1.jpg" id="targetImage">
+        <img src="images/image1.jpg" id="targetImage">
         <canvas id="myCanvas"></canvas>
     </div>
     <script>
@@ -89,7 +89,7 @@
         const body = document.body;
         
         function updateSlide() {
-            document.getElementById('targetImage').src="image"+(currentSlide+1).toString()+".jpg";
+            document.getElementById('targetImage').src="images/image"+(currentSlide+1).toString()+".jpg";
         }
         
         var timerElement;
